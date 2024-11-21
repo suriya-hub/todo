@@ -114,12 +114,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         gap: 10,
-        paddingVertical: 10
+        paddingVertical: 5
     },
     message: { color: 'black' },
     seperator: { backgroundColor: 'lightgrey', height: 1 },
     actionContainer: { rowGap: 5 },
-    listing: { marginTop: 20, paddingHorizontal: 10 }
+    listing: { marginTop: 20 },
+    container: { paddingHorizontal: 10 }
 });
 
 
