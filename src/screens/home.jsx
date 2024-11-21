@@ -5,7 +5,7 @@ import { getData, saveData } from './components/asyncStorage/localStorage';
 
 
 
-export default function Home() {
+export default function Home({ colors }) {
 
     const [data, setData] = useState([]);
     const [notes, setNotes] = useState('')
@@ -56,12 +56,12 @@ export default function Home() {
 
     return (
         <>
-            <View style={styles.screenContainer}>
+            <View style={[styles.container, { backgroundColor: colors.background }]}>
                 <View>
                     <TextInput
                         multiline
                         numberOfLines={4}
-                        style={styles.input}
+                        style={[styles.text, { color: colors.text }]}
                         value={notes}
                         placeholder="Type a note.."
                         onChangeText={(text) => setNotes(text)}
@@ -75,6 +75,7 @@ export default function Home() {
                     data={data}
                     keyExtractor={(item) => item.id}
                     initialNumToRender={data.length}
+                    style={styles.listing}
                     renderItem={(item) => (
                         <View style={styles.listingContainer}>
                             <TouchableOpacity
@@ -84,7 +85,7 @@ export default function Home() {
                                     handleEdit(item.item.label),
                                 ]}>
                                 <View>
-                                    <Text multiline numberOfLines={2} style={styles.message}>
+                                    <Text multiline numberOfLines={2} style={[styles.message, { color: colors.text }]}>
                                         {item.item.label}
                                     </Text>
                                 </View>
@@ -113,10 +114,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         gap: 10,
+        paddingVertical: 10
     },
     message: { color: 'black' },
     seperator: { backgroundColor: 'lightgrey', height: 1 },
     actionContainer: { rowGap: 5 },
+    listing: { marginTop: 20, paddingHorizontal: 10 }
 });
 
 
